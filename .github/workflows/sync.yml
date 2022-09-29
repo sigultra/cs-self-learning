@@ -4,14 +4,14 @@ name: Sync Fork
 on:
   push: # push 时触发, 主要是为了测试配置有没有问题
   schedule:
-    - cron: '* */3 * * *' # 每3小时触发, 对于一些更新不那么频繁的项目可以设置为每天一次, 低碳一点
+    - cron: '*/30 * * * *' # every 30 minutes
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: PKUFlyingPig/cs-self-learning
+      - uses: sigultra/fork-sync@v1.6.3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.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 }}
           owner: PKUFlyingPig # fork 的上游仓库 user
           head: master # fork 的上游仓库 branch
           base: master # 本地仓库 branch
